@@ -128,3 +128,13 @@ li {
     width: 100%;
     background-color: #fda4af;
 }
+
+#slider {
+    padding-top: 0.4rem;
+}
+
+#sliderTable {
+    width: 80vw;
+    height: 0.7rem;
+    border-radius: 0.1rem;
+}

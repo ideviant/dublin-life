@@ -46,15 +46,69 @@
             </div>
         </div>
         <div class="tzconv_range">
-            <input type="range" class="timeslider time-input_range" id="tzconv_range" min="1" max="24" step="1">
-            <ul class="heatmap">
-                <li class="heatmap-good"></li>
-                <li class="heatmap-neutral"></li>
-                <li class="heatmap-bad"></li>
-            </ul>
+            <input type="range" class="timeslider time-input_range" id="tzconv_range" min="0" max="23" step="1">
+            <div id="slider">
+                <script>
+                    function createTable() {
+                        // 创建表格元素
+                        const table = document.createElement('table');
+                        table.id = 'sliderTable';
+                        table.frame = "void";
+                        table.rules = "none";
+
+                        // 创建行
+                        const row = document.createElement('tr');
+
+                        // 创建24个单元格
+                        for (let i = 0; i < 24; i++) {
+                            const cell = document.createElement('td');
+                            cell.id = `range-${i}`;
+                            row.appendChild(cell);
+                        }
+
+                        // 将行添加到表格中
+                        table.appendChild(row);
+
+                        // 将表格添加到容器中
+                        const container = document.getElementById('slider');
+                        container.appendChild(table);
+                    }
+
+                    // 调用函数创建表格
+                    createTable();
+                </script>
+            </div>
         </div>
-        <div>
-            <p id="value">Value: </p>
+        <div id="slider">
+            <script>
+                function createTable() {
+                    // 创建表格元素
+                    const table = document.createElement('table');
+                    table.id = 'sliderTable';
+                    table.frame = "void";
+                    table.rules = "none";
+
+                    // 创建行
+                    const row = document.createElement('tr');
+
+                    // 创建24个单元格
+                    for (let i = 0; i < 24; i++) {
+                        const cell = document.createElement('td');
+                        cell.id = `range-${i}`;
+                        row.appendChild(cell);
+                    }
+
+                    // 将行添加到表格中
+                    table.appendChild(row);
+
+                    // 将表格添加到容器中
+                    const container = document.getElementById('slider');
+                    container.appendChild(table);
+                }
+
+                // 调用函数创建表格
+                createTable();
+            </script>
         </div>
     </div>
     <script src="index.js"></script>

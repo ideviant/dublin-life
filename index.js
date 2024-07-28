@@ -19,25 +19,76 @@ document.getElementById("beijing_location_time").innerHTML = beijingTime;
 document.getElementById("dublin_location_time").innerHTML = dublinTime;
 
 // Set face status
-function isWorkingTime(time) {
-    return (parseInt(time) >= 9) & (parseInt(time) < 17);
+function isWorkTime(time) {
+    return (parseInt(time) >= 10) & (parseInt(time) < 17);
+}
+
+function isSleepTime(time) {
+    return (parseInt(time) >= 0) & (parseInt(time) < 9);
+}
+
+function isFreeTime(time) {
+    return (parseInt(time) >= 17) & (parseInt(time) < 24);
 }
 
 function setFace(locationHour, faceLocation) {
-    if (isWorkingTime(locationHour)) {
+    if (isFreeTime(locationHour)) {
         document.getElementById(faceLocation).src = "images/face-smile.svg";
-    } else {
+    } else if (isSleepTime(locationHour)) {
         document.getElementById(faceLocation).src = "images/face-frown.svg";
+    } else {
+        document.getElementById(faceLocation).src = "images/face-meh.svg";
     }
 }
 
 setFace(beijingHour, "face-beijing");
 setFace(dublinHour, "face-dublin");
 
-//Slider
+//Set slider value
+document.getElementById("tzconv_range").value = dublinHour;
+
+//Set slider range color
+for (let hour = 0; hour < 24; hour++) {
+    if (isFreeTime(hour) & isFreeTime(hour + 7)) {
+        document.getElementById(`range-${hour}`).style.backgroundColor =
+            "#bef264";
+    } else if (isSleepTime(hour) | isSleepTime(hour + 7)) {
+        document.getElementById(`range-${hour}`).style.backgroundColor =
+            "#fda4af";
+    } else {
+        document.getElementById(`range-${hour}`).style.backgroundColor =
+            "#fde047";
+    }
+}
+
+//Slider action
 const input = document.getElementById("tzconv_range");
 const value = document.getElementById("value");
-value.textContent = input.value;
 input.addEventListener("input", (event) => {
-    value.textContent = event.target.value;
+    var selectDublinHour;
+    var selectBeijingHour;
+    selectDublinHour = event.target.value;
+    if (event.target.value < 10) {
+        document.getElementById("dublin_location_time").innerHTML =
+            "0" + event.target.value + ":00";
+    } else {
+        document.getElementById("dublin_location_time").innerHTML =
+            event.target.value + ":00";
+    }
+    setFace(selectDublinHour, "face-dublin");
+
+    if (event.target.value < 3) {
+        document.getElementById("beijing_location_time").innerHTML =
+            "0" + parseInt(parseInt(event.target.value) + 7) + ":00";
+        selectBeijingHour = parseInt(parseInt(event.target.value) + 7);
+    } else if ((event.target.value >= 3) & (event.target.value <= 16)) {
+        document.getElementById("beijing_location_time").innerHTML =
+            parseInt(parseInt(event.target.value) + 7) + ":00";
+        selectBeijingHour = parseInt(parseInt(event.target.value) + 7);
+    } else {
+        document.getElementById("beijing_location_time").innerHTML =
+            "0" + parseInt(parseInt(event.target.value) - 17) + ":00";
+        selectBeijingHour = parseInt(parseInt(event.target.value) - 17);
+    }
+    setFace(selectBeijingHour, "face-beijing");
 });
