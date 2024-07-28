@@ -1,23 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
 .main {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    /* color: #f24c3d; */
+    gap: 1.5rem;
+    color: #737373;
     font-family: "Courier New", Courier, monospace;
     height: 100vh;
-    padding-bottom: 10vh;
+    background-image: url("images/world.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 90%;
 }
 
 .location_card {
-    /* background-color: cadetblue; */
     display: flex;
     align-items: center;
-    /* flex-wrap: wrap; */
-    gap: 0.5rem;
+    gap: 5rem;
     padding: 0.25rem 0.25rem 0.25rem 0.25rem;
     position: relative;
-    width: 80vw;
+    width: 75vw;
 }
 
 .location_icon {
@@ -27,37 +33,98 @@
 }
 
 .location_info {
-    /* background-color: aliceblue; */
     display: flex;
     flex: 2 1 37.5%;
 }
 
 .location_place {
-    padding-left: 0.5rem;
+    padding-left: 1rem;
 }
 
 .location_name {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
 .location_tz {
-    font-size: 0.6rem;
+    font-size: rem;
 }
 
 .location_date {
-    /* background-color: antiquewhite; */
     display: flex;
     justify-content: flex-end;
-    font-size: 0.8rem;
+    font-size: 1.5rem;
 }
 
 .location_time {
-    /* background-color: aqua; */
-    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
     font-weight: bold;
 }
 
 .location_status {
-    /* background-color: aquamarine; */
+    display: flex;
+    justify-content: center;
+}
+
+.location_face {
+    width: 2.8rem;
+}
+
+.tzconv_range {
+    margin-top: 0.8rem;
+    width: 80vw;
+}
+
+.timeslider {
+    position: absolute;
+    outline: none;
+    width: 80vw;
+    background-color: transparent;
+    appearance: none;
+    z-index: 2;
+}
+
+.timeslider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: #bae6fd;
+    opacity: 0.8;
+    border: white;
+    cursor: pointer;
+    outline: 0.2rem solid #fafafa;
+}
+
+.heatmap {
+    display: flex;
+    align-items: center;
+    color: transparent;
+    z-index: 3;
+    padding-top: 0.4rem;
+}
+
+li {
+    height: 0.7rem;
+    border-radius: 0.1rem;
+}
+
+.heatmap-good {
+    left: 0%;
+    width: 20%;
+    background-color: #bef264;
+}
+
+.heatmap-neutral {
+    left: 20%;
+    width: 70%;
+    background-color: #fde047;
+}
+
+.heatmap-bad {
+    left: 70%;
+    width: 100%;
+    background-color: #fda4af;
 }

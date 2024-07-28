@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/utc.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/timezone.js"></script>
+    <title>TimeZoneConverter</title>
 </head>
 
 <body>
@@ -13,16 +16,48 @@
         <div class="location_card">
             <div class="location_info">
                 <div class="location_icon">
-                    <img src="cn.png" width="28" title="Flag of China">
+                    <img src="images/cn.svg" width=48" title="Flag of China">
                 </div>
                 <div class="location_place">
                     <div class="location_name"> Beijing, China </div>
                     <div class="location_tz"> CST(UTC +8) </div>
                 </div>
             </div>
-            <div class="location_date"> Fri, 26 Jul 2024 </div>
-            <div class="location_time"> 13:00 </div>
-            <div class="location_status"> location_status </div>
+            <div class="location_date" id="beijing_location_date"> Fri, 26 Jul 2024 </div>
+            <div class="location_time" id="beijing_location_time"> 23:00 </div>
+            <div class="location_status">
+                <img class="location_face" id="face-beijing" src="images/face-smile.svg" alt="face-smile">
+            </div>
+        </div>
+        <div class="location_card">
+            <div class="location_info">
+                <div class="location_icon">
+                    <img src="images/ie.svg" width=48" title="Flag of Ireland">
+                </div>
+                <div class="location_place">
+                    <div class="location_name"> Dublin, Ireland </div>
+                    <div class="location_tz"> IST(UTC +1) </div>
+                </div>
+            </div>
+            <div class="location_date" id="dublin_location_date"> Fri, 26 Jul 2024 </div>
+            <div class="location_time" id="dublin_location_time"> 16:00 </div>
+            <div class="location_status">
+                <img class="location_face" id="face-dublin" src="images/face-smile.svg" alt="face-frown">
+            </div>
+        </div>
+        <div class="tzconv_range">
+            <input type="range" class="timeslider time-input_range" id="tzconv_range" min="1" max="24" step="1">
+            <ul class="heatmap">
+                <li class="heatmap-good"></li>
+                <li class="heatmap-neutral"></li>
+                <li class="heatmap-bad"></li>
+            </ul>
+        </div>
+        <div>
+            <p id="value">Value: </p>
+        </div>
+    </div>
+    <script src="index.js"></script>
 </body>
 
 </html>
