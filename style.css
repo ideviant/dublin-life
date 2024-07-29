@@ -5,7 +5,7 @@
 .main {
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     flex-direction: column;
     gap: 1.5rem;
     color: #737373;
@@ -22,8 +22,11 @@
     align-items: center;
     gap: 5rem;
     padding: 0.25rem 0.25rem 0.25rem 0.25rem;
-    position: relative;
     width: 75vw;
+}
+
+#top_card {
+    padding-top: 30vh;
 }
 
 .location_icon {

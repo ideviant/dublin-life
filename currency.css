@@ -1,0 +1,32 @@
+.currency {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40vw;
+    gap: 5rem;
+    padding-top: 8rem;
+}
+
+.currency_country {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.currency_flag {
+    height: 3rem;
+}
+.currency_name {
+    font-size: 1.5rem;
+}
+
+.currency_value {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-left: 1rem;
+}
+
+.currency_pic {
+    display: flex;
+    height: 3rem;
+}

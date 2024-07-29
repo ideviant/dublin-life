@@ -5,15 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="currency.css">
+
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/utc.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/timezone.js"></script>
-    <title>TimeZoneConverter</title>
+    <title>Dublin life</title>
 </head>
 
 <body>
     <div class="main">
-        <div class="location_card">
+        <div class="location_card" id="top_card">
             <div class="location_info">
                 <div class="location_icon">
                     <img src="images/cn.svg" width=48" title="Flag of China">
@@ -79,39 +81,24 @@
                 </script>
             </div>
         </div>
-        <div id="slider">
-            <script>
-                function createTable() {
-                    // 创建表格元素
-                    const table = document.createElement('table');
-                    table.id = 'sliderTable';
-                    table.frame = "void";
-                    table.rules = "none";
-
-                    // 创建行
-                    const row = document.createElement('tr');
-
-                    // 创建24个单元格
-                    for (let i = 0; i < 24; i++) {
-                        const cell = document.createElement('td');
-                        cell.id = `range-${i}`;
-                        row.appendChild(cell);
-                    }
-
-                    // 将行添加到表格中
-                    table.appendChild(row);
-
-                    // 将表格添加到容器中
-                    const container = document.getElementById('slider');
-                    container.appendChild(table);
-                }
-
-                // 调用函数创建表格
-                createTable();
-            </script>
+        <div class="currency">
+            <div class="currency_country">
+                <img class="currency_flag" src="images/currency-cny.svg" alt="" srcset="">
+                <p class="currency_name">CNY</p>
+                <p class="currency_value" id="currency-cny-value">1,000</p>
+            </div>
+            <div class="currency_pic">
+                <img src="images/exchange.svg" alt="">
+            </div>
+            <div class="currency_country">
+                <img class="currency_flag" src="images/currency-euro.svg" alt="" srcset="">
+                <p class="currency_name">EUR</p>
+                <p class="currency_value" id="currency-eur-value">127.03</p>
+            </div>
         </div>
-    </div>
-    <script src="index.js"></script>
+        <script src="timezone.js"></script>
+        <script src="currency.js"></script>
+
 </body>
 
 </html>
