@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50vw;
+    /* width: 60vw; */
     gap: 4rem;
     padding-top: 8rem;
 }
@@ -50,8 +50,8 @@ input::-webkit-inner-spin-button {
 
 #hidden-cny,
 #hidden-eur {
-    position: absolute;
     visibility: hidden;
+    position: absolute;
     white-space: pre;
     background-color: beige;
 }
