@@ -1,22 +1,5 @@
 // Get current time
-const now = dayjs().format();
-dayjs.extend(dayjs_plugin_utc);
-dayjs.extend(dayjs_plugin_timezone);
-
-const beijingDate = dayjs().tz("Asia/Shanghai").format("ddd, DD MMM YYYY");
-const beijingTime = dayjs().tz("Asia/Shanghai").format("HH:mm");
-const beijingHour = dayjs().tz("Asia/Shanghai").format("HH");
-
-const dublinDate = dayjs().tz("Europe/Dublin").format("ddd, DD MMM YYYY");
-const dublinTime = dayjs().tz("Europe/Dublin").format("HH:mm");
-const dublinHour = dayjs().tz("Europe/Dublin").format("HH");
-
-// Show date and time
-document.getElementById("beijing_location_date").innerHTML = beijingDate;
-document.getElementById("dublin_location_date").innerHTML = dublinDate;
-
-document.getElementById("beijing_location_time").innerHTML = beijingTime;
-document.getElementById("dublin_location_time").innerHTML = dublinTime;
+let now = dayjs().format();
 
 // Set face status
 function isWorkTime(time) {
@@ -41,36 +24,63 @@ function setFace(locationHour, faceLocation) {
     }
 }
 
-setFace(beijingHour, "face-beijing");
-setFace(dublinHour, "face-dublin");
+// Update time
 
-//Set slider value
-document.getElementById("tzconv_range").value = dublinHour;
+function updateTime() {
+    now = dayjs().format();
+    console.log("updateTime:" + now);
+    dayjs.extend(dayjs_plugin_utc);
+    dayjs.extend(dayjs_plugin_timezone);
+    beijingDate = dayjs().tz("Asia/Shanghai").format("ddd, DD MMM YYYY");
+    beijingTime = dayjs().tz("Asia/Shanghai").format("HH:mm");
+    beijingHour = dayjs().tz("Asia/Shanghai").format("HH");
 
-//Set slider range color
-for (let hour = 0; hour < 24; hour++) {
-    if ((hour < 17) & isFreeTime(hour) & isFreeTime(hour + 7)) {
-        document.getElementById(`range-${hour}`).style.backgroundColor =
-            "#bef264";
-    } else if ((hour < 17) & (isSleepTime(hour) | isSleepTime(hour + 7))) {
-        document.getElementById(`range-${hour}`).style.backgroundColor =
-            "#fda4af";
-    } else if ((hour >= 17) & isSleepTime(hour - 17)) {
-        document.getElementById(`range-${hour}`).style.backgroundColor =
-            "#fda4af";
-    } else if (hour == 13) {
-        document.getElementById(`range-${hour}`).style.backgroundColor =
-            "#bef264";
-    } else {
-        document.getElementById(`range-${hour}`).style.backgroundColor =
-            "#fde047";
+    dublinDate = dayjs().tz("Europe/Dublin").format("ddd, DD MMM YYYY");
+    dublinTime = dayjs().tz("Europe/Dublin").format("HH:mm");
+    dublinHour = dayjs().tz("Europe/Dublin").format("HH");
+
+    // Show date and time
+    document.getElementById("beijing_location_date").innerHTML = beijingDate;
+    document.getElementById("dublin_location_date").innerHTML = dublinDate;
+
+    document.getElementById("beijing_location_time").innerHTML = beijingTime;
+    document.getElementById("dublin_location_time").innerHTML = dublinTime;
+
+    setFace(beijingHour, "face-beijing");
+    setFace(dublinHour, "face-dublin");
+
+    //Set slider value
+    document.getElementById("tzconv_range").value = dublinHour;
+
+    //Set slider range color
+    for (let hour = 0; hour < 24; hour++) {
+        if ((hour < 17) & isFreeTime(hour) & isFreeTime(hour + 7)) {
+            document.getElementById(`range-${hour}`).style.backgroundColor =
+                "#bef264";
+        } else if ((hour < 17) & (isSleepTime(hour) | isSleepTime(hour + 7))) {
+            document.getElementById(`range-${hour}`).style.backgroundColor =
+                "#fda4af";
+        } else if ((hour >= 17) & isSleepTime(hour - 17)) {
+            document.getElementById(`range-${hour}`).style.backgroundColor =
+                "#fda4af";
+        } else if (hour == 13) {
+            document.getElementById(`range-${hour}`).style.backgroundColor =
+                "#bef264";
+        } else {
+            document.getElementById(`range-${hour}`).style.backgroundColor =
+                "#fde047";
+        }
     }
 }
+
+updateTime();
+setInterval(updateTime, 60000);
 
 //Slider action
 const input = document.getElementById("tzconv_range");
 const value = document.getElementById("value");
 input.addEventListener("input", (event) => {
+    console.log("addEventListener:" + now);
     var selectDublinHour;
     var selectBeijingHour;
     selectDublinHour = event.target.value;
