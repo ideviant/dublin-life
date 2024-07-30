@@ -50,10 +50,10 @@ input::-webkit-inner-spin-button {
 
 #hidden-cny,
 #hidden-eur {
+    position: absolute;
     visibility: hidden;
     white-space: pre;
-    position: absolute;
-    background-color: azure;
+    background-color: beige;
 }
 
 #currency-cny-value {

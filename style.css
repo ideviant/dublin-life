@@ -10,6 +10,8 @@
     gap: 1.5rem;
     color: #737373;
     font-family: "Courier New", Courier, monospace;
+    /* font-family: "Space Mono", monospace; */
+
     height: 100vh;
     background-image: url("images/world.svg");
     background-position: center;
@@ -26,7 +28,7 @@
 }
 
 #top_card {
-    padding-top: 30vh;
+    padding-top: 25vh;
 }
 
 .location_icon {

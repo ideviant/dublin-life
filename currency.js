@@ -53,6 +53,7 @@ function adjustCNYWidth(input) {
     const hidden = document.getElementById("hidden-cny");
     hidden.style.fontSize = getComputedStyle(input).fontSize;
     hidden.style.fontFamily = getComputedStyle(input).fontFamily;
+    hidden.style.fontWeight = getComputedStyle(input).fontWeight;
     hidden.textContent = input.value || input.placeholder;
     const width = hidden.offsetWidth;
     console.log("adjustCNYWidth:" + width);
@@ -73,6 +74,8 @@ function adjustEURWidth(input) {
     const hidden = document.getElementById("hidden-eur");
     hidden.style.fontSize = getComputedStyle(input).fontSize;
     hidden.style.fontFamily = getComputedStyle(input).fontFamily;
+    hidden.style.fontWeight = getComputedStyle(input).fontWeight;
+
     hidden.textContent = input.value || input.placeholder;
     const width = hidden.offsetWidth;
     console.log("adjustEURWidth:" + width);
