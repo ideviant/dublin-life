@@ -20,7 +20,7 @@ async function fetchJsonData() {
         cnyToEur = data["cny"]["eur"];
         document.getElementById("currency-eur-value").value = (
             data["cny"]["eur"] * cnyValue
-        ).toFixed(1);
+        ).toFixed(2);
     } catch (error) {
         console.error(
             "There has been a problem with your fetch operation:",
@@ -62,7 +62,7 @@ function adjustCNYWidth(input) {
     //update EUR value
     document.getElementById("currency-eur-value").value = (
         cnyToEur * document.getElementById("currency-cny-value").value
-    ).toFixed(1);
+    ).toFixed(2);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
