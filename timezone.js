@@ -28,7 +28,6 @@ function setFace(locationHour, faceLocation) {
 
 function updateTime() {
     now = dayjs().format();
-    console.log("updateTime:" + now);
     dayjs.extend(dayjs_plugin_utc);
     dayjs.extend(dayjs_plugin_timezone);
     beijingDate = dayjs().tz("Asia/Shanghai").format("ddd, DD MMM YYYY");
@@ -80,7 +79,6 @@ setInterval(updateTime, 60000);
 const input = document.getElementById("tzconv_range");
 const value = document.getElementById("value");
 input.addEventListener("input", (event) => {
-    console.log("addEventListener:" + now);
     var selectDublinHour;
     var selectBeijingHour;
     selectDublinHour = event.target.value;
