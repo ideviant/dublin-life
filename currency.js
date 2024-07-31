@@ -101,7 +101,7 @@ function adjustEURWidth(input) {
     //update CNY value
     console.log("update CNY value");
     cnyValue =
-        removeSeparator(document.getElementById("currency-cny-value").value) /
+        removeSeparator(document.getElementById("currency-eur-value").value) /
         cnyToEur;
 
     console.log("cnyValue:" + cnyValue);
