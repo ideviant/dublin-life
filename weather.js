@@ -49,6 +49,8 @@ function updateData() {
             dyaNight = "x" + dyaNight;
         }
 
+        document.getElementById("weather-beijing-icon").title = SuzhouCondition;
+
         document.getElementById("weather-beijing-icon").src =
             "images/weather/svg/" +
             SuzhouCondition.toString().slice(0, 2) +
@@ -64,6 +66,9 @@ function updateData() {
             if (dublinCondition > 800) {
                 dyaNight = "x" + dyaNight;
             }
+
+            document.getElementById("weather-dublin-icon").title =
+                dublinCondition;
 
             document.getElementById("weather-dublin-icon").src =
                 "images/weather/svg/" +

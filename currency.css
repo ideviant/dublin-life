@@ -56,15 +56,15 @@ input::-webkit-inner-spin-button {
     position: absolute;
     white-space: pre;
     background-color: beige;
-    font-family: "Courier New";
+    /* font-family: "Courier New"; */
 }
 
 #currency-cny-value {
-    font-family: "Courier New";
+    /* font-family: "Courier New"; */
     caret-color: #fb7185;
 }
 
 #currency-eur-value {
-    font-family: "Courier New";
+    /* font-family: "Courier New"; */
     caret-color: #22d3ee;
 }

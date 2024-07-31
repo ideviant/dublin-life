@@ -1,5 +1,4 @@
 .top_card {
-    padding-top: 5vh;
 }
 
 .weather {
@@ -8,7 +7,6 @@
     justify-content: space-between;
     font-weight: bold;
     width: 80vw;
-    padding: 5vh 0.25rem 0.25rem 0.25rem;
 }
 
 .weather-card {

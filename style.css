@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: "Courier";
 }
 .main {
     display: flex;
@@ -8,7 +9,6 @@
     justify-content: center;
     flex-direction: column;
     color: #737373;
-    font-family: "Courier New";
     height: 100vh;
     background-image: url("images/world.svg");
     background-position: center;
@@ -31,7 +31,7 @@
     align-items: center;
     justify-content: center;
     gap: 5rem;
-    padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+    padding: 0.5rem 0.25rem 0.5rem 0.25rem;
     width: 75vw;
 }
 
