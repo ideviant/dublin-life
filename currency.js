@@ -51,6 +51,8 @@ refreshAtMidnight();
 
 // auto adjust input Width and update EUR/CNY value
 function adjustCNYWidth(input) {
+    input.value = addSeparator(input.value);
+    console.log("input.value:" + input.value);
     const hidden = document.getElementById("hidden-cny");
     hidden.style.fontSize = getComputedStyle(input).fontSize;
     hidden.style.fontFamily = getComputedStyle(input).fontFamily;
@@ -60,9 +62,15 @@ function adjustCNYWidth(input) {
     input.style.width = `${width}px`;
 
     //update EUR value
-    document.getElementById("currency-eur-value").value = (
-        cnyToEur * document.getElementById("currency-cny-value").value
-    ).toFixed(2);
+    console.log("update EUR value");
+    eurValue =
+        cnyToEur *
+        removeSeparator(document.getElementById("currency-cny-value").value);
+
+    document.getElementById("currency-eur-value").value = addSeparator(
+        eurValue.toFixed(2).toString(),
+    );
+
     const oppHidden = document.getElementById("hidden-eur");
     oppHidden.style.fontSize = getComputedStyle(input).fontSize;
     oppHidden.style.fontFamily = getComputedStyle(input).fontFamily;
@@ -79,6 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function adjustEURWidth(input) {
+    input.value = addSeparator(input.value);
+
     const hidden = document.getElementById("hidden-eur");
     hidden.style.fontSize = getComputedStyle(input).fontSize;
     hidden.style.fontFamily = getComputedStyle(input).fontFamily;
@@ -89,9 +99,17 @@ function adjustEURWidth(input) {
     input.style.width = `${width}px`;
 
     //update CNY value
-    document.getElementById("currency-cny-value").value = (
-        document.getElementById("currency-eur-value").value / cnyToEur
-    ).toFixed(1);
+    console.log("update CNY value");
+    cnyValue =
+        removeSeparator(document.getElementById("currency-cny-value").value) /
+        cnyToEur;
+
+    console.log("cnyValue:" + cnyValue);
+
+    document.getElementById("currency-cny-value").value = addSeparator(
+        cnyValue.toFixed(1).toString(),
+    );
+
     const oppHidden = document.getElementById("hidden-cny");
     oppHidden.style.fontSize = getComputedStyle(input).fontSize;
     oppHidden.style.fontFamily = getComputedStyle(input).fontFamily;
@@ -99,10 +117,36 @@ function adjustEURWidth(input) {
 
     oppHidden.textContent = input.value || input.placeholder;
     const oppWidth = oppHidden.offsetWidth;
-    document.getElementById("currency-eur-value").style.width = `${oppWidth}px`;
+    document.getElementById("currency-cny-value").style.width = `${oppWidth}px`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     const input = document.getElementById("currency-eur-value");
     adjustEURWidth(input);
 });
+
+//Thousands separator
+function removeSeparator(inputValue) {
+    console.log("removeSeparator: " + inputValue);
+    console.log("removedSeparator: " + parseInt(inputValue.replace(/,/g, "")));
+
+    return parseInt(inputValue.replace(/,/g, ""));
+}
+
+function addSeparator(inputValue) {
+    console.log("addSeparator:" + inputValue);
+
+    // 去除非数字字符和小数点
+    inputValue = inputValue.replace(/[^0-9.]/g, "");
+
+    let parts = inputValue.split(".");
+    let integerPart = parts[0];
+    let formattedIntegerPart = integerPart.replace(
+        /\B(?=(\d{3})+(?!\d))/g,
+        ",",
+    );
+
+    return parts.length > 1
+        ? formattedIntegerPart + "." + parts[1]
+        : formattedIntegerPart;
+}
