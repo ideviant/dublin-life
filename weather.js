@@ -1,4 +1,5 @@
-function dayOrNight(dt, sunrise, sunset) {
+function dayOrNight(sunrise, sunset) {
+    dt = parseInt(Date.now() / 1000);
     if ((dt >= sunrise) & (dt <= sunset)) {
         return "d";
     } else {
@@ -22,10 +23,9 @@ async function fetchJsonData(city) {
         console.log(data);
         condition = data["weather"][0]["id"];
         temp = data["main"]["temp"];
-        dt = data["dt"];
         sunrise = data["sys"]["sunrise"];
         sunset = data["sys"]["sunset"];
-        dyaNight = dayOrNight(dt, sunrise, sunset);
+        dyaNight = dayOrNight(sunrise, sunset);
 
         return [condition, temp, dyaNight];
     } catch (error) {
@@ -44,6 +44,7 @@ function updateData() {
     fetchJsonData("Suzhou").then(([SuzhouCondition, SuzhouTemp, dyaNight]) => {
         document.getElementById("weather-beijing-temp").innerHTML =
             SuzhouTemp + "°";
+
         if (SuzhouCondition > 800) {
             dyaNight = "x" + dyaNight;
         }
@@ -55,15 +56,22 @@ function updateData() {
             ".svg";
     });
 
-    fetchJsonData("Dublin").then(([dublinCondition, dublinTemp, dyaNight]) => {
-        document.getElementById("weather-dublin-temp").innerHTML =
-            dublinTemp + "°";
-        document.getElementById("weather-dublin-icon").src =
-            "images/weather/svg/" +
-            dublinCondition.toString().slice(0, 2) +
-            dyaNight +
-            ".svg";
-    });
+    fetchJsonData("Dublin City").then(
+        ([dublinCondition, dublinTemp, dyaNight]) => {
+            document.getElementById("weather-dublin-temp").innerHTML =
+                dublinTemp + "°";
+
+            if (dublinCondition > 800) {
+                dyaNight = "x" + dyaNight;
+            }
+
+            document.getElementById("weather-dublin-icon").src =
+                "images/weather/svg/" +
+                dublinCondition.toString().slice(0, 2) +
+                dyaNight +
+                ".svg";
+        },
+    );
 }
 
 updateData();

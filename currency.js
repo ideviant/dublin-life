@@ -57,7 +57,6 @@ function adjustCNYWidth(input) {
     hidden.style.fontWeight = getComputedStyle(input).fontWeight;
     hidden.textContent = input.value || input.placeholder;
     const width = hidden.offsetWidth;
-    console.log("adjustCNYWidth:" + width);
     input.style.width = `${width}px`;
 
     //update EUR value
@@ -71,7 +70,6 @@ function adjustCNYWidth(input) {
 
     oppHidden.textContent = input.value || input.placeholder;
     const oppWidth = oppHidden.offsetWidth;
-    console.log("adjustEURWidth:" + oppWidth);
     document.getElementById("currency-eur-value").style.width = `${oppWidth}px`;
 }
 
@@ -88,7 +86,6 @@ function adjustEURWidth(input) {
 
     hidden.textContent = input.value || input.placeholder;
     const width = hidden.offsetWidth;
-    console.log("adjustEURWidth:" + width);
     input.style.width = `${width}px`;
 
     //update CNY value
@@ -102,7 +99,6 @@ function adjustEURWidth(input) {
 
     oppHidden.textContent = input.value || input.placeholder;
     const oppWidth = oppHidden.offsetWidth;
-    console.log("adjustCNYWidth:" + oppWidth);
     document.getElementById("currency-eur-value").style.width = `${oppWidth}px`;
 }
 
