@@ -22,7 +22,7 @@ async function fetchJsonData(city) {
         var data = await response.json();
         console.log(data);
         condition = data["weather"][0]["id"];
-        temp = data["main"]["temp"];
+        temp = data["main"]["temp"].toFixed(1);
         sunrise = data["sys"]["sunrise"];
         sunset = data["sys"]["sunset"];
         dyaNight = dayOrNight(sunrise, sunset);
