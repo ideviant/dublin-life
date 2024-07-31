@@ -5,13 +5,10 @@
 .main {
     display: flex;
     align-items: center;
-    /* justify-content: center; */
     flex-direction: column;
     gap: 1.5rem;
     color: #737373;
-    font-family: "Courier New", Courier, monospace;
-    /* font-family: "Space Mono", monospace; */
-
+    font-family: "Courier New";
     height: 100vh;
     background-image: url("images/world.svg");
     background-position: center;
@@ -19,16 +16,23 @@
     background-size: 90%;
 }
 
+.timezone {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.middle_card {
+    padding-top: 10vh;
+}
+
 .location_card {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 5rem;
     padding: 0.25rem 0.25rem 0.25rem 0.25rem;
     width: 75vw;
-}
-
-#top_card {
-    padding-top: 25vh;
 }
 
 .location_icon {
@@ -52,7 +56,7 @@
 }
 
 .location_tz {
-    font-size: rem;
+    font-size: 1rem;
 }
 
 .location_date {

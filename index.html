@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="currency.css">
+    <link rel="stylesheet" href="weather.css">
 
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/utc.js"></script>
@@ -15,73 +16,86 @@
 
 <body>
     <div class="main">
-        <div class="location_card" id="top_card">
-            <div class="location_info">
-                <div class="location_icon">
-                    <img src="images/cn.svg" width=48" title="Flag of China">
-                </div>
-                <div class="location_place">
-                    <div class="location_name"> Beijing, China </div>
-                    <div class="location_tz"> CST(UTC +8) </div>
-                </div>
+        <div class="weather top_card">
+            <div class="weather-card">
+                <p class="weather-temp" id="weather-beijing-temp"></p>
+                <img class="weather-condition-icon" id="weather-beijing-icon" src="" alt="" srcset="">
             </div>
-            <div class="location_date" id="beijing_location_date"> Fri, 26 Jul 2024 </div>
-            <div class="location_time" id="beijing_location_time"> 23:00 </div>
-            <div class="location_status">
-                <img class="location_face" id="face-beijing" src="images/face-smile.svg" alt="face-smile">
+            <div class="weather-card">
+                <p class="weather-temp" id="weather-dublin-temp"></p>
+                <img class="weather-condition-icon" id="weather-dublin-icon" src="" alt="" srcset="">
             </div>
         </div>
-        <div class="location_card">
-            <div class="location_info">
-                <div class="location_icon">
-                    <img src="images/ie.svg" width=48" title="Flag of Ireland">
+
+        <div class="timezone middle_card">
+            <div class="location_card">
+                <div class="location_info">
+                    <div class="location_icon">
+                        <img src="images/cn.svg" width=48" title="Flag of China">
+                    </div>
+                    <div class="location_place">
+                        <div class="location_name"> Beijing, China </div>
+                        <div class="location_tz"> CST(UTC +8) </div>
+                    </div>
                 </div>
-                <div class="location_place">
-                    <div class="location_name"> Dublin, Ireland </div>
-                    <div class="location_tz"> IST(UTC +1) </div>
+                <div class="location_date" id="beijing_location_date"> Fri, 26 Jul 2024 </div>
+                <div class="location_time" id="beijing_location_time"> 23:00 </div>
+                <div class="location_status">
+                    <img class="location_face" id="face-beijing" src="images/face-smile.svg" alt="face-smile">
                 </div>
             </div>
-            <div class="location_date" id="dublin_location_date"> Fri, 26 Jul 2024 </div>
-            <div class="location_time" id="dublin_location_time"> 16:00 </div>
-            <div class="location_status">
-                <img class="location_face" id="face-dublin" src="images/face-smile.svg" alt="face-frown">
+            <div class="location_card">
+                <div class="location_info">
+                    <div class="location_icon">
+                        <img src="images/ie.svg" width=48" title="Flag of Ireland">
+                    </div>
+                    <div class="location_place">
+                        <div class="location_name"> Dublin, Ireland </div>
+                        <div class="location_tz"> IST(UTC +1) </div>
+                    </div>
+                </div>
+                <div class="location_date" id="dublin_location_date"> Fri, 26 Jul 2024 </div>
+                <div class="location_time" id="dublin_location_time"> 16:00 </div>
+                <div class="location_status">
+                    <img class="location_face" id="face-dublin" src="images/face-smile.svg" alt="face-frown">
+                </div>
             </div>
-        </div>
-        <div class="tzconv_range">
-            <input type="range" class="timeslider time-input_range" id="tzconv_range" min="0" max="23" step="1">
-            <div id="slider">
-                <script>
-                    function createTable() {
-                        // 创建表格元素
-                        const table = document.createElement('table');
-                        table.id = 'sliderTable';
-                        table.frame = "void";
-                        table.rules = "none";
+            <div class="tzconv_range">
+                <input type="range" class="timeslider time-input_range" id="tzconv_range" min="0" max="23" step="1">
+                <div id="slider">
+                    <script>
+                        function createTable() {
+                            // 创建表格元素
+                            const table = document.createElement('table');
+                            table.id = 'sliderTable';
+                            table.frame = "void";
+                            table.rules = "none";
 
-                        // 创建行
-                        const row = document.createElement('tr');
+                            // 创建行
+                            const row = document.createElement('tr');
 
-                        // 创建24个单元格
-                        for (let i = 0; i < 24; i++) {
-                            const cell = document.createElement('td');
-                            cell.id = `range-${i}`;
-                            row.appendChild(cell);
+                            // 创建24个单元格
+                            for (let i = 0; i < 24; i++) {
+                                const cell = document.createElement('td');
+                                cell.id = `range-${i}`;
+                                row.appendChild(cell);
+                            }
+
+                            // 将行添加到表格中
+                            table.appendChild(row);
+
+                            // 将表格添加到容器中
+                            const container = document.getElementById('slider');
+                            container.appendChild(table);
                         }
 
-                        // 将行添加到表格中
-                        table.appendChild(row);
-
-                        // 将表格添加到容器中
-                        const container = document.getElementById('slider');
-                        container.appendChild(table);
-                    }
-
-                    // 调用函数创建表格
-                    createTable();
-                </script>
+                        // 调用函数创建表格
+                        createTable();
+                    </script>
+                </div>
             </div>
         </div>
-        <div class="currency">
+        <div class="currency botton_card">
             <div class="currency_country">
                 <img class="currency_flag" src="images/currency-cny.svg" alt="" srcset="">
                 <p class="currency_name">CNY</p>
@@ -104,11 +118,10 @@
             </div>
         </div>
     </div>
-
         <script src=" timezone.js">
         </script>
                     <script src="currency.js"></script>
-
+                    <script src="weather.js"></script>
 </body>
 
 </html>

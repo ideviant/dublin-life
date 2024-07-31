@@ -1,0 +1,23 @@
+.top_card {
+    padding-top: 15vh;
+}
+
+.weather {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    width: 80vw;
+    padding: 15vh 0.25rem 0.25rem 0.25rem;
+}
+
+.weather-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.weather-condition-icon {
+    width: 5rem;
+}

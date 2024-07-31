@@ -11,9 +11,8 @@ async function fetchJsonData() {
     try {
         const response = await fetch(url);
         if (!response.ok) {
-            throw new Error(
-                "Network response was not ok " + response.statusText,
-            );
+            document.getElementById("weather-dublin-icon").src =
+                "images/weather/svg/rainbow.svg";
         }
         var data = await response.json();
         console.log(data);
@@ -22,6 +21,8 @@ async function fetchJsonData() {
             data["cny"]["eur"] * cnyValue
         ).toFixed(2);
     } catch (error) {
+        document.getElementById("weather-dublin-icon").src =
+            "images/weather/svg/rainbow.svg";
         console.error(
             "There has been a problem with your fetch operation:",
             error,
