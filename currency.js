@@ -51,8 +51,8 @@ refreshAtMidnight();
 
 // auto adjust input Width and update EUR/CNY value
 function adjustCNYWidth(input) {
-    input.value = addSeparator(input.value);
-    console.log("input.value:" + input.value);
+    input.value = updateSeparator(input);
+
     const hidden = document.getElementById("hidden-cny");
     hidden.style.fontSize = getComputedStyle(input).fontSize;
     hidden.style.fontFamily = getComputedStyle(input).fontFamily;
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function adjustEURWidth(input) {
-    input.value = addSeparator(input.value);
+    input.value = updateSeparator(input);
 
     const hidden = document.getElementById("hidden-eur");
     hidden.style.fontSize = getComputedStyle(input).fontSize;
@@ -149,4 +149,23 @@ function addSeparator(inputValue) {
     return parts.length > 1
         ? formattedIntegerPart + "." + parts[1]
         : formattedIntegerPart;
+}
+
+function updateSeparator(input) {
+    //get cursor
+    let selectionStart = input.selectionStart;
+    let selectionEnd = input.selectionEnd;
+
+    //addSeparator
+    let oldValue = input.value;
+    let newValue = addSeparator(oldValue);
+    input.value = newValue;
+
+    //set cursor
+    let offset =
+        oldValue.slice(0, selectionStart).replace(/,/g, "").length -
+        newValue.slice(0, selectionStart).replace(/,/g, "").length;
+
+    input.setSelectionRange(selectionStart + offset, selectionEnd + offset);
+    return newValue;
 }
