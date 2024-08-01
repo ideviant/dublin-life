@@ -1,8 +1,24 @@
+@font-face {
+    font-family: "Berkeley Mono Data";
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    src: url("./fonts/berkeley-mono-data/berkeley-mono-data.woff2")
+            format("woff2"),
+        url("./fonts/berkeley-mono-data/berkeley-mono-data.woff") format("woff"),
+        url("./fonts/berkeley-mono-data/berkeley-mono-data.ttf")
+            format("truetype");
+    font-display: swap;
+}
+
 * {
     margin: 0;
     padding: 0;
-    font-family: "Courier";
+    /* font-family: "Courier"; */
+    font-family: "Berkeley Mono Data";
+    text-transform: uppercase;
 }
+
 .main {
     display: flex;
     align-items: center;
