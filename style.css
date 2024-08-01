@@ -55,6 +55,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* width: 100%; */
 }
 
 .location_info {
@@ -63,6 +64,10 @@
 }
 
 .location_place {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     padding-left: 1rem;
 }
 
