@@ -81,9 +81,24 @@ function adjustCNYWidth(input) {
     document.getElementById("currency-eur-value").style.width = `${oppWidth}px`;
 }
 
+function updateInputWidth(inputId, hiddenId) {
+    const input = document.getElementById(inputId);
+    console.log("input.value:" + input.value);
+
+    const hidden = document.getElementById(hiddenId);
+    hidden.style.fontSize = getComputedStyle(input).fontSize;
+    hidden.style.fontFamily = getComputedStyle(input).fontFamily;
+    hidden.style.fontWeight = getComputedStyle(input).fontWeight;
+    hidden.textContent = input.value || input.placeholder;
+
+    const width = hidden.offsetWidth;
+    console.log("width:", width);
+    input.style.width = `${width}px`;
+}
+
+//First load
 document.addEventListener("DOMContentLoaded", () => {
-    const input = document.getElementById("currency-cny-value");
-    adjustEURWidth(input);
+    updateInputWidth("currency-cny-value", "hidden-cny");
 });
 
 function adjustEURWidth(input) {
@@ -121,8 +136,7 @@ function adjustEURWidth(input) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const input = document.getElementById("currency-eur-value");
-    adjustEURWidth(input);
+    updateInputWidth("currency-eur-value", "hidden-eur");
 });
 
 //Thousands separator

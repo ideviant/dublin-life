@@ -9,15 +9,28 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="currency.css">
     <link rel="stylesheet" href="weather.css">
+    <link rel="stylesheet" href="holiday.css">
 
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/utc.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/timezone.js"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
     <title>dublin life</title>
 </head>
 
 <body>
+
     <div class="main">
+        <div class="holiday">
+            <dotlottie-player class="holiday-pic"
+                src="https://lottie.host/946088d4-8108-4253-9b63-c04e6c8e0329/jeYtBeZ4F1.json" background="transparent"
+                speed="1" loop autoplay></dotlottie-player>
+
+            <!-- <img class="holiday-pic" src="images/confetti-svgrepo-com.svg" alt="" srcset=""> -->
+            <p class="holiday-text" id="holiday-date">Fri, 05 Aug 2024</p>
+            <p class="holiday-text" id="holiday-name">August Holiday, </p>
+        </div>
+
         <div class="weather top_card">
             <div class="weather-card">
                 <p class="weather-temp" id="weather-beijing-temp"></p>
@@ -101,7 +114,7 @@
             <div class="currency_country">
                 <img class="currency_flag" src="images/currency-cny.svg" alt="" srcset="">
                 <p class="currency_name">CNY</p>
-                <input type="text" name="CNY" class="currency_value" id="currency-cny-value" value="1000.0"
+                <input type="text" name="CNY" class="currency_value" id="currency-cny-value" value="1,000.0"
                     oninput="adjustCNYWidth(this)">
                 <div id="hidden-cny">
                 </div>
@@ -119,11 +132,13 @@
                 <div id="hidden-eur""></div>
             </div>
         </div>
-
+    </div>
             <script src=" timezone.js">
             </script>
                     <script src="currency.js"></script>
                     <script src="weather.js"></script>
+                    <script src="holiday.js"></script>
+
 </body>
 
 </html>
