@@ -30,11 +30,11 @@ function updateTime() {
     now = dayjs().format();
     dayjs.extend(dayjs_plugin_utc);
     dayjs.extend(dayjs_plugin_timezone);
-    beijingDate = dayjs().tz("Asia/Shanghai").format("ddd, DD MMM YYYY");
+    beijingDate = dayjs().tz("Asia/Shanghai").format("ddd,DD MMM YYYY");
     beijingTime = dayjs().tz("Asia/Shanghai").format("HH:mm");
     beijingHour = dayjs().tz("Asia/Shanghai").format("HH");
 
-    dublinDate = dayjs().tz("Europe/Dublin").format("ddd, DD MMM YYYY");
+    dublinDate = dayjs().tz("Europe/Dublin").format("ddd,DD MMM YYYY");
     dublinTime = dayjs().tz("Europe/Dublin").format("HH:mm");
     dublinHour = dayjs().tz("Europe/Dublin").format("HH");
 
